@@ -14,21 +14,42 @@
 
 <div class="container">
 
-    <div class="row">
+    <div class="jumbotron jumbotron-fluid bg-secondary text-white text-center">
+        <div class="container">
+        <h1 class="display-4">Its a jumbotron heading!</h1>
+        </div>
+    </div>
 
-        <div class="col-md-4">
+    <div class="row offset-1">
+        <div class="col-4 p-2 bg-secondary text-white">
 
-        <figure class="card">
-            <h1 class="card-header">this is is a card</h1>
-            <div class="card-body">
-                <h1 class="card-title">this is the title</h1>
-                <p class="card-text">lorem ipsum blah blah blah asdfd</p>
-            </div>
-        </figure>
+            <figure class="card bg-secondary border border-info rounded-0">
+                <h2 class="card-header bg-dark text-white">Current Question</h2>
+                <div class="card-body text-white">
+                    <h3 class="card-title bg-secondary">What question will the game ask?</h3>
+                    <p class="card-text lead">this text will probably be replaced with an image...</p>
+                </div>
+            </figure>
 
         </div>
 
+        <div class="col-6 d-flex bg-dark text-white">
+            <div class="container">
+                <h3 class="header">Select an answer from the list:</h3>
+                <div class="col"> <!--Use list here??-->
+                <p class="lead">A. Shih Tzu</p>
+                <p class="lead">B. Pommeranian</p>
+                <p class="lead">C. Staffordshire Terrier</p>
+                <p class="lead">D. Golden Retriever</p>
+                </div>
+                <h3 class="header text-right">Time remaining <span class="badge badge-info" id="time-remaining">30s</span></h3>
+            </div>
+        </div>
+
     </div>
+
+</div>
+
 </div>
 
 
