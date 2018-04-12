@@ -70,14 +70,37 @@
 
     $(document).ready(function() {
 
+
+        $("#answer-div #answers li").hover(
+            function () { //$(this).addClass("font-italic")
+                $(this).addClass("text-info");
+                console.log("mouse ON - " + $(this)); //mouse is off
+            },
+            function () { //$(this).removeClass("font-italic")
+              if (($(this).hasClass("text-info")) && ($(this).hasClass("uline"))) //
+                { console.log("already has class??");
+                    return;    // return if the item has "text-info" class & "<u>" tag in html
+                }
+              console.log($(this).html());
+                $(this).removeClass("text-info");
+                console.log("mouse off - " + $(this)); // when mouse is off element
+            });
+
        $("#answer-div #answers li").on("click", function () {
-          //™ $("#answer-div #answers ol").find("li").removeClass("font-weight-bold"); // change this
-           console.log($(this).attr("id"));
-            //let answerClicked = $(this).parent("li");
+           console.log("first" + $(this));
+
+          $("#answer-div #answers ol").find("li").removeClass("uline text-info"); // change this
+           console.log($(this).attr("id")); // LOGS ID OF ANSWER HERE!
+           console.log("second" + $(this));
+           
+           $(this).addClass("uline text-info");
+           console.log("class added!")
+
+           /* let answerClicked = $(this).parent("li");
             //answerClicked.addClass("font-weight-bold");
             //answerID = answerClicked.attr("id");
             // call dNoneAll(), then remove .d-none from the clicked-link's corresponding div
-            //alert(answerID);
+            //alert(answerID); */
        });
 
     });
