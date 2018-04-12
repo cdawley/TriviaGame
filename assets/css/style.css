@@ -1,0 +1,8 @@
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+li {
+    font-size: 1.6rem;
+}

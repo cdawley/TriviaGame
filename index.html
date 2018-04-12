@@ -16,7 +16,8 @@
 
     <div class="jumbotron jumbotron-fluid bg-secondary text-white text-center">
         <div class="container">
-        <h1 class="display-4">Its a jumbotron heading!</h1>
+        <h1 class="display-4">Trivia Game!!</h1>
+            <h3 class="display-6">is it about dog breeds or countries flags?</h3>
         </div>
     </div>
 
@@ -33,14 +34,16 @@
 
         </div>
 
-        <div class="col-6 d-flex bg-dark text-white">
-            <div class="container">
+        <div class="col-6 d-flex bg-dark text-white" id="answer-div">
+            <div class="container" id="answers">
                 <h3 class="header">Select an answer from the list:</h3>
-                <div class="col"> <!--Use list here??-->
-                <p class="lead">A. Shih Tzu</p>
-                <p class="lead">B. Pommeranian</p>
-                <p class="lead">C. Staffordshire Terrier</p>
-                <p class="lead">D. Golden Retriever</p>
+                <div class="col">
+                    <ol id="answer-list">
+                <li id="answer-1">Shih Tzu</li>
+                <li id="answer-2">Pommeranian</li>
+                <li id="answer-3">Staffordshire Terrier</li>
+                <li id="answer-4">Golden Retriever</li>
+                    </ol>
                 </div>
                 <h3 class="header text-right">Time remaining <span class="badge badge-info" id="time-remaining">30s</span></h3>
             </div>
@@ -53,15 +56,32 @@
 </div>
 
 
-
-
-<script src="assets/javascript/app.js"></script>
-
 <!--JQuery, 'Popper', and Bootstrap JS files-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
+<script src="assets/javascript/app.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    let answerID;
+
+    $(document).ready(function() {
+
+       $("#answer-div #answers li").on("click", function () {
+            $("#answer-div #answers ol").find("li").removeClass("font-weight-bold"); // change this
+            let answerClicked = $(this).parent("li");
+            answerClicked.addClass("font-weight-bold");
+            answerID = answerClicked.attr("id");
+            // call dNoneAll(), then remove .d-none from the clicked-link's corresponding div
+            alert(answerID);
+       });
+       
+    });
+
+</script>
 
 </body>
 </html>
