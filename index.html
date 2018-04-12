@@ -71,14 +71,15 @@
     $(document).ready(function() {
 
        $("#answer-div #answers li").on("click", function () {
-            $("#answer-div #answers ol").find("li").removeClass("font-weight-bold"); // change this
-            let answerClicked = $(this).parent("li");
-            answerClicked.addClass("font-weight-bold");
-            answerID = answerClicked.attr("id");
+          //™ $("#answer-div #answers ol").find("li").removeClass("font-weight-bold"); // change this
+           console.log($(this).attr("id"));
+            //let answerClicked = $(this).parent("li");
+            //answerClicked.addClass("font-weight-bold");
+            //answerID = answerClicked.attr("id");
             // call dNoneAll(), then remove .d-none from the clicked-link's corresponding div
-            alert(answerID);
+            //alert(answerID);
        });
-       
+
     });
 
 </script>
