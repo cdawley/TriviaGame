@@ -66,35 +66,33 @@
 
 <script type="text/javascript">
 
-    let answerID;
+    let answerID; //for id-tag of answer...
 
     $(document).ready(function() {
 
-
+// mouse hover event... adds/removes "text-info" class to make text blue text on mouse on/off
         $("#answer-div #answers li").hover(
-            function () { //$(this).addClass("font-italic")
+            function () {
                 $(this).addClass("text-info");
-                console.log("mouse ON - " + $(this)); //mouse is off
             },
-            function () { //$(this).removeClass("font-italic")
+            function () { // (if this item has been chosen as the correct answer, don't change text on mouse-off
               if (($(this).hasClass("text-info")) && ($(this).hasClass("uline"))) //
-                { console.log("already has class??");
-                    return;    // return if the item has "text-info" class & "<u>" tag in html
+                {
+                    return;
                 }
-              console.log($(this).html());
                 $(this).removeClass("text-info");
-                console.log("mouse off - " + $(this)); // when mouse is off element
             });
+
+        // removes classes for underlined & blue text from all on click, adds to single item clicked
+        // 'player can choose only one answer, but choice is not final'
 
        $("#answer-div #answers li").on("click", function () {
            console.log("first" + $(this));
 
           $("#answer-div #answers ol").find("li").removeClass("uline text-info"); // change this
-           console.log($(this).attr("id")); // LOGS ID OF ANSWER HERE!
-           console.log("second" + $(this));
-           
            $(this).addClass("uline text-info");
-           console.log("class added!")
+           answerID = $(this).attr("id");
+                console.log(answerID + "selected");
 
            /* let answerClicked = $(this).parent("li");
             //answerClicked.addClass("font-weight-bold");
