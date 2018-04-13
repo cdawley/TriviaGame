@@ -3,6 +3,11 @@
     margin: 0 auto;
 }
 
+div#answers {
+    position: inherit;
+   top: 20%;
+}
+
 li {
     font-size: 1.6rem;
 }
