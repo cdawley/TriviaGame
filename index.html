@@ -68,6 +68,44 @@
 
     let answerID; //for id-tag of answer...
 
+    // ================================= { AJAX here } =================================
+
+    // URL for Wikipedia API (summary of Brazil article): https://en.wikipedia.org/api/rest_v1/page/summary/Brazil
+
+    // response.thumbnail.source yields URL for flag thumbnail (png) ...
+
+    /*
+
+
+    var nation = $(this).attr("data-name"); //change this to take from array of country names
+    var queryURL = "https://en.wikipedia.org/api/rest_v1/page/summary/" + nation;
+
+    notes from stack overflow on setting user-agent (asked for in API docs)
+    ------------------------------------------------------------------------
+    $.ajax({
+    url: "http://localhost:4000",
+    type: "POST",
+    data: {we: "2"},
+    dataType:'text',
+    headers: {"User-Agent": "user agent 1"}
+    beforeSend: function (req) {
+        req.setRequestHeader('User-Agent', 'user agent changed to 2');
+    }
+
+    // from class exercise code
+
+    // Creates AJAX call for the specific movie button being clicked
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+
+    });
+
+    */
+
+
     $(document).ready(function() {
 
 // mouse hover event... adds/removes "text-info" class to make text blue text on mouse on/off
