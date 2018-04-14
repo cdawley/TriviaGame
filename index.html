@@ -16,8 +16,8 @@
 
     <div class="jumbotron jumbotron-fluid bg-secondary text-white text-center">
         <div class="container">
-        <h2 class="display-4">That's Sure the Flag</h2>
-            <h4 class="display-7">A trivia game that test's your knowledge of world nation's flags.</h4>
+        <h2 class="display-4">National Flag Trivia</h2>
+            <h4 class="display-7">A trivia game that tests your knowledge of the flags of the World's nations</h4>
         </div>
     </div>
 
@@ -39,6 +39,7 @@
 
         <div class="col-6 bg-dark text-white" id="answer-div">
             <div class="container" id="answers">
+                <!--Make sure to select random flag/answers on page load-->
                 <h3 class="header">What nation's flag is this?:</h3>
                 <div class="col">
                     <ol id="answer-list">
@@ -57,6 +58,10 @@
                     <div class="col-fluid mb-2 align-content-center">
                         <h4 class="display-5 text-center"><span class="badge badge-warning" id="time-remaining">30s</span> remaining...</h4>
                     </div>
+                    <div class="container align-content-center">
+                        <h4 class="display-5 text-center">Correct: <span class="badge badge-secondary" id="correct">0</span> Incorrect: <span class="badge badge-secondary" id="incorrect">0</span></h4>
+                    </div>
+
 
                 </div>
 

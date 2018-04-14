@@ -1,11 +1,17 @@
-.col-centered {
-    float: none;
-    margin: 0 auto;
+body {
+    background-color: darkgray;
 }
 
 div#answers {
     position: inherit;
-   top: 20%;
+    top: 10%;
+}
+
+div#button-div {
+    margin-left:auto;
+    margin-right:0;
+ /*   padding-right: 1rem; */
+
 }
 
 li {
@@ -14,4 +20,8 @@ li {
 
 .uline {
     text-decoration: underline;
+}
+
+div.fixed-height {
+    min-height: 40%;
 }
