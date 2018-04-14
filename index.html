@@ -16,27 +16,28 @@
 
     <div class="jumbotron jumbotron-fluid bg-secondary text-white text-center">
         <div class="container">
-        <h1 class="display-4">Trivia Game!!</h1>
-            <h3 class="display-6">what will be the subject of this game?</h3>
+        <h2 class="display-4">That's Sure the Flag</h2>
+            <h4 class="display-7">A trivia game that test's your knowledge of world nation's flags.</h4>
         </div>
     </div>
 
-    <div class="row offset-1">
-        <div class="col-4 p-2 bg-secondary text-white">
+    <div class="container">
+    <div class="row offset-1 fixed-height">
+        <div class="col-4 d-flex p-1 bg-secondary text-white">
 
             <figure class="card bg-secondary border border-info rounded-0">
-                <h2 class="card-header bg-dark text-white">Current Flag</h2>
+                <h2 class="card-header bg-dark text-white">National Flag</h2>
                 <div class="card-body text-white">
-                    <h3 class="card-title bg-secondary">Select an answer from the list on the right.</h3>
+                    <h5 class="card-title bg-secondary">Select an answer from the list on the right.</h5>
                     <p class="card-text lead">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/320px-Flag_of_Brazil.svg.png" class="image img-fluid">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/320px-Flag_of_Brazil.svg.png" class="image img-fluid" id="flag-img">
                     </p>
                 </div>
             </figure>
 
         </div>
 
-        <div class="col-6 d-flex bg-dark text-white" id="answer-div">
+        <div class="col-6 bg-dark text-white" id="answer-div">
             <div class="container" id="answers">
                 <h3 class="header">What nation's flag is this?:</h3>
                 <div class="col">
@@ -46,8 +47,19 @@
                 <li id="answer-3">Sri Lanka</li>
                 <li id="answer-4">Canada</li>
                     </ol>
+
+                    <div class="row">
+                        <div class="col-fluid pb-2" id="button-div">
+                            <button type="button" id="btn-answer" class="btn btn-secondary btn-outline-info rounded-0">Submit Answer</button>
+                        </div>
+                    </div>
+
+                    <div class="col-fluid mb-2 align-content-center">
+                        <h4 class="display-5 text-center"><span class="badge badge-warning" id="time-remaining">30s</span> remaining...</h4>
+                    </div>
+
                 </div>
-                <h3 class="header text-right">Time remaining <span class="badge badge-info" id="time-remaining">30s</span></h3>
+
             </div>
         </div>
 
@@ -58,8 +70,10 @@
 </div>
 
 
-<!--JQuery, 'Popper', and Bootstrap JS files-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<!--Jquery min (Bootstrap's slim does not support Ajax!)-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!--'Popper', and Bootstrap JS files-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -108,6 +122,7 @@
     */
 
 
+
     $(document).ready(function() {
 
 // mouse hover event... adds/removes "text-info" class to make text blue text on mouse on/off
@@ -139,6 +154,12 @@
             //answerID = answerClicked.attr("id");
             // call dNoneAll(), then remove .d-none from the clicked-link's corresponding div
             //alert(answerID); */
+       });
+
+       $("button#btn-answer").on("click", function () {
+           console.log("clicked");
+           gameObj.newNation();
+           gameObj.ajaxFlagImg();
        });
 
     });
