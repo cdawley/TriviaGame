@@ -37,10 +37,59 @@ let gameObj = {
     flagImgURL: "",
 
     // timer stuff.... uncoded
-    count: 10,
-    startTimer: function() { setInterval(decrementTime, 1000); },
-    decrementTime: function () { count--; },
 
+    timer: {
+
+        //  Variable that will hold our setInterval that runs the stopwatch
+        intervalId: 0,
+
+// prevents the clock from being sped up unnecessarily
+    clockRunning: false,
+
+    time: 10,
+
+    reset: function() {
+
+        this.timer.time = 10;
+
+        $("#time-remaining").text("10");
+    },
+
+    start: function() {
+
+        // DONE: Use setInterval to start the count here and set the clock to running.
+        if (!this.timer.clockRunning) {
+            this.timer.intervalId = setInterval(this.timer.count, 1000);
+            this.timer.clockRunning = true;
+        }
+    },
+    stop: function() {
+
+        // DONE: Use clearInterval to stop the count here and set the clock to not be running.
+        clearInterval(this.timer.intervalId);
+        this.timer.clockRunning = false;
+    },
+    count: function() {
+
+            // DONE: decrement time by 1, remember we cant use "this" here.
+            this.timer.time--;
+
+            if (this.timer.time === 0) {
+                this.timer.timesUp();
+                this.timer.stop();
+                this.timer.reset();
+            }
+
+            // DONE: Use the variable we just created to show the converted time in the "display" div.
+            $("#display").text(this.timer.time);
+        },
+
+        timesUp: function() {
+
+            console.log("TIMES UP!")
+
+        },
+    },
 
     newNation: function () {
 // remove the name of country from a random index in 'arrNations' array

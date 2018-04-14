@@ -21,56 +21,55 @@
         </div>
     </div>
 
-    <div class="container">
-    <div class="row offset-1 fixed-height">
-        <div class="col-4 d-flex p-1 bg-secondary text-white">
+    <div class=container">
+        <div class="row offset-1">
+            <div class="col-4 p-2 bg-secondary text-white">
 
-            <figure class="card bg-secondary border border-info rounded-0">
-                <h2 class="card-header bg-dark text-white">National Flag</h2>
-                <div class="card-body text-white">
-                    <h5 class="card-title bg-secondary">Select an answer from the list on the right.</h5>
-                    <p class="card-text lead">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/320px-Flag_of_Brazil.svg.png" class="image img-fluid" id="flag-img">
-                    </p>
-                </div>
-            </figure>
-
-        </div>
-
-        <div class="col-6 bg-dark text-white" id="answer-div">
-            <div class="container" id="answers">
-                <!--Make sure to select random flag/answers on page load-->
-                <h3 class="header">What nation's flag is this?:</h3>
-                <div class="col">
-                    <ol id="answer-list">
-                <li id="answer-1">Argentina</li>
-                <li id="answer-2">Brazil</li>
-                <li id="answer-3">Sri Lanka</li>
-                <li id="answer-4">Canada</li>
-                    </ol>
-
-                    <div class="row">
-                        <div class="col-fluid pb-2" id="button-div">
-                            <button type="button" id="btn-answer" class="btn btn-secondary btn-outline-info rounded-0">Submit Answer</button>
-                        </div>
+                <figure class="card bg-secondary border border-info rounded-0">
+                    <h2 class="card-header bg-dark text-white">National Flag</h2>
+                    <div class="card-body text-white">
+                        <h5 class="card-title bg-secondary">Select an answer from the list on the right.</h5>
+                        <p class="card-text lead">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/320px-Flag_of_Brazil.svg.png" class="image img-fluid" id="flag-img">
+                        </p>
                     </div>
-
-                    <div class="col-fluid mb-2 align-content-center">
-                        <h4 class="display-5 text-center"><span class="badge badge-warning" id="time-remaining">30s</span> remaining...</h4>
-                    </div>
-                    <div class="container align-content-center">
-                        <h4 class="display-5 text-center">Correct: <span class="badge badge-secondary" id="correct">0</span> Incorrect: <span class="badge badge-secondary" id="incorrect">0</span></h4>
-                    </div>
-
-
-                </div>
+                </figure>
 
             </div>
+
+            <div class="col-6 bg-dark text-white" id="answer-div">
+                <div class="container" id="answers">
+                    <!--Make sure to select random flag/answers on page load-->
+                    <h3 class="header">What nation's flag is this?:</h3>
+                    <div class="col">
+                        <ol id="answer-list">
+                    <li id="answer-1">Argentina</li>
+                    <li id="answer-2">Brazil</li>
+                    <li id="answer-3">Sri Lanka</li>
+                    <li id="answer-4">Canada</li>
+                        </ol>
+
+                        <div class="row">
+                            <div class="col-fluid pb-2" id="button-div">
+                                <button type="button" id="btn-answer" class="btn btn-secondary btn-outline-info rounded-0">Submit Answer</button>
+                            </div>
+                        </div>
+
+                        <div class="col-fluid mb-2 align-content-center">
+                            <h4 class="display-5 text-center"><span class="badge badge-warning" id="time-remaining">30s</span> remaining...</h4>
+                        </div>
+                        <div class="container align-content-center">
+                            <h4 class="display-5 text-center">Correct: <span class="badge badge-secondary" id="correct">0</span> Incorrect: <span class="badge badge-secondary" id="incorrect">0</span></h4>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            </div>
+
         </div>
-
-    </div>
-
-</div>
 
 </div>
 
@@ -179,6 +178,7 @@
            gameObj.newNation();
            gameObj.ajaxFlagImg();
            gameObj.randomAnswers();
+           gameObj.timer.start();
 
            console.log("answer selected was: " + $("#answers ol#answer-list").find("li.text-info.uline").text());
            $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline")
