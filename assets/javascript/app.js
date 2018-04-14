@@ -36,6 +36,12 @@ let gameObj = {
     currNation: "",
     flagImgURL: "",
 
+    // timer stuff.... uncoded
+    count: 10,
+    startTimer: function() { setInterval(decrementTime, 1000); },
+    decrementTime: function () { count--; },
+
+
     newNation: function () {
 // remove the name of country from a random index in 'arrNations' array
 
@@ -72,6 +78,7 @@ let gameObj = {
         $.ajax({
             url: queryURL,
             method: "GET",
+            // the following was requested in API docs, but Google Chrome doesn't allow it
             // headers: {"User-Agent": "contact christian@art-box.us"},
         }).then(function (response) {
             this.flagImgURL = response.thumbnail.source;
@@ -80,13 +87,11 @@ let gameObj = {
         });
     },
 
-    setAnswers: function () {
-
-
+    randomAnswers: function () {
         /*
      multiply random position (between 0 and 1/3 of all the countries)
-     by current iteration (from 1 to 3), and push that country to an array, provided its not the same
-     as the actual answers (if it is the same, take it from the number less 10)...
+     by current iteration (from 1 to 3), and element at that index to a new array, provided its not the same
+     as the actual answer (if it is the same, take it from that index less 10)...
      this should provide a diverse group of random "wrong answers"
         */
         this.arrAnswers.length = 0;
@@ -111,17 +116,27 @@ let gameObj = {
 
         /* select random start position (between 1 & 3) and fill answer array from that index
 
-        *** this was a chunk of abstraction that took many hours to chip away at ***
-        */
+        *** note: this was a chunk of abstraction that took quite some time to chip away at *** */
+    },
+
+    chooseRandom: function() {
 
         let Pos2 = Math.floor(Math.random() * Math.floor(4)); //random number between 0 and 3
         console.log("start position is: " + Pos2);
+        let answerID = 1;
         for (let i = Pos2; i < Pos2 + this.arrAnswers.length; i++) {
 
-            if (i < 4) { //4 could be arrAnswers.length
-                console.log(this.arrAnswers[i]);
+            let theIndex;
+            if (i < this.arrAnswers.length) {
+                theIndex = i;
+                console.log("li#answer-" + (answerID));
+                $("li#answer-" + answerID).text(this.arrAnswers[theIndex]);
+                answerID++;
             } else {
-                console.log(this.arrAnswers[(4 - i) * -1]); //4 here could be arrAnswers.length
+                theIndex = (this.arrAnswers.length - i) * -1;
+                console.log("li#answer-" + (answerID));
+                $("li#answer-" + answerID).text(this.arrAnswers[theIndex]);
+                answerID++
             }
 
         };
