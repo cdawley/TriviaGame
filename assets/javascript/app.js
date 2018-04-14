@@ -49,39 +49,37 @@ let gameObj = {
     time: 10,
 
     reset: function() {
+        this.time = 10;
 
-        this.timer.time = 10;
-
-        $("#time-remaining").text("10");
+        $("#time-remaining").text(this.time + "s");
     },
 
     start: function() {
-
+        //console.log("start - " + this);
         // DONE: Use setInterval to start the count here and set the clock to running.
-        if (!this.timer.clockRunning) {
-            this.timer.intervalId = setInterval(this.timer.count, 1000);
-            this.timer.clockRunning = true;
+        if (!this.clockRunning) {
+            this.intervalId = setInterval(this.count, 1000);
+            this.clockRunning = true;
         }
     },
     stop: function() {
-
         // DONE: Use clearInterval to stop the count here and set the clock to not be running.
-        clearInterval(this.timer.intervalId);
-        this.timer.clockRunning = false;
+        clearInterval(this.intervalId);
+        this.clockRunning = false;
     },
     count: function() {
-
+        console.log("count - " + gameObj.timer.time);
             // DONE: decrement time by 1, remember we cant use "this" here.
-            this.timer.time--;
+            gameObj.timer.time -= 1;
 
-            if (this.timer.time === 0) {
-                this.timer.timesUp();
-                this.timer.stop();
-                this.timer.reset();
+            if (gameObj.timer.time === 0) {
+                gameObj.timer.timesUp();
+                gameObj.timer.stop();
+                gameObj.timer.reset();
             }
 
             // DONE: Use the variable we just created to show the converted time in the "display" div.
-            $("#display").text(this.timer.time);
+            $("#time-remaining").text(gameObj.timer.time + "s");
         },
 
         timesUp: function() {
