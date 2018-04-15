@@ -37,6 +37,11 @@ let gameObj = {
     arrAnswers: [],
 
     currNation: "",
+    currAnswer: "",
+
+    correctAnswers: 0,
+    incorrectAnswers: 0,
+
     flagImgURL: "",
 
 
@@ -81,7 +86,12 @@ let gameObj = {
         timesUp: function() {
 
             gameObj.timer.stop();
-            gameObj.timer.reset();
+
+            if ( !$("button#btn-answer").prop("disabled") ) {
+                //an answer was selected...
+                //check answer, count/for against player
+            };
+            $("button#btn-answer").text("Next Question");
 
 
         },

@@ -51,7 +51,7 @@
 
                         <div class="row">
                             <div class="col-fluid pb-2" id="button-div">
-                                <button type="button" id="btn-answer" class="btn btn-secondary btn-outline-info rounded-0">Submit Answer</button>
+                                <button type="button" id="btn-answer" class="btn btn-secondary btn-outline-info rounded-0" disabled>Submit Answer</button>
                             </div>
                         </div>
 
@@ -105,24 +105,67 @@
         // 'player can choose only one answer, but choice is not final'
 
        $("#answer-div #answers li").on("click", function () {
-          $("#answer-div #answers ol").find("li").removeClass("uline text-info"); // change this
+          $("#answer-div #answers ol").find("li").removeClass("uline text-info");
            $(this).addClass("uline text-info");
-           answerID = $(this).attr("id");
+
+           if ( $("button#btn-answer").prop("disabled") ) {
+           $("button#btn-answer").prop("disabled", false);
+           }
+
+          gameObj.currAnswer = $(this).text();
+
        });
 
        $("button#btn-answer").on("click", function () {
 
+           if ($(this).text() === "Next Question") {
+               // answer was checked when time ran out in gameObj.timer.count(), so start a new round..
+
+               gameObj.newNation();
+               gameObj.ajaxFlagImg();
+               gameObj.randomAnswers();
+               gameObj.timer.reset();
+
+           } else if ($(this).text() === "Check Answer") {
+
+               let selectedAnswer = $("#answers ol#answer-list").find("li.text-info.uline").text();
+
+               if (selectedAnswer === gameObj.currAnswer) {
+                   // answers is correct.. so add
+                   gameObj.correctAnswers++;
+                   $("span#correct").text(gameObj.correctAnswers);
+               } else {
+                   gameObj.incorrectAnswers++;
+                   $("span#incorrect").text(gameObj.incorrectAnswers);
+               }
+
+               // then start a new round...
+
+               gameObj.newNation();
+               gameObj.ajaxFlagImg();
+               gameObj.randomAnswers();
+               gameObj.timer.reset();
+               gameObj.currAnswer = "";
+
+           }
+
            // check if an answer is selected
 
            let selectedAnswer = $("#answers ol#answer-list").find("li.text-info.uline").text();
+
+           switch (selectedAnswer) {
+               case
+           }
            if (selectedAnswer.length > 0) {
-               // answer was selected..
+
+               console.log("answer selected: " + selectedAnswer);
                // check if it was correct
            } else {
+               console.log("no answer selected");
                // length was 0, answer was incorrect
            }
 
-           console.log("answer selected was: " + $("#answers ol#answer-list").find("li.text-info.uline").text());
+         //  console.log("answer selected was: " + $("#answers ol#answer-list").find("li.text-info.uline").text());
            $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline");
            // $("#answers ol#answer-list").find("li.uline").removeClass("uline");
 
@@ -134,7 +177,7 @@
 
            //$(this).attr("disabled", true);
 
-           console.log("this answer: " + $(this).text());
+           console.log("button text: " + $(this).text());
            // check if answer is true
 
 
@@ -144,6 +187,11 @@
            gameObj.ajaxFlagImg();
            gameObj.randomAnswers();
            gameObj.timer.start();
+           gameObj.currAnswer = "";
+
+           // change button text to "Check Answer" and disable
+           $("button#btn-answer").text("Check Answer");
+           $("button#btn-answer").prop("disabled", true);
 
 
 
