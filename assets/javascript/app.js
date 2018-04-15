@@ -86,7 +86,7 @@ let gameObj = {
         timesUp: function() {
 
             gameObj.timer.stop();
-            gameObj.currAnswer.length = 0; // clear current answer to eliminate false negatives
+            gameObj.currAnswer = ""; // clear current answer to eliminate false negatives
             $("button#btn-answer").text("Next Question");
             $("button#btn-answer").prop("disabled", false);
 

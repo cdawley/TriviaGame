@@ -92,7 +92,7 @@
         gameObj.ajaxFlagImg();
         gameObj.randomAnswers();
         gameObj.chooseRandom();
-        gameObj.currAnswer.length = 0;
+        gameObj.currAnswer = "";
         gameObj.timer.start();
 
 // mouse hover event... adds/removes "text-info" class to make text blue text on mouse on/off
@@ -142,7 +142,7 @@
 
            $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline");
 
-           gameObj.currAnswer.length = 0;
+           gameObj.currAnswer = "";
            console.log("current answer reset to: " + gameObj.currAnswer);
            gameObj.newNation();
            gameObj.ajaxFlagImg();
