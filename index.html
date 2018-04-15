@@ -86,66 +86,6 @@
 
 <script type="text/javascript">
 
-    let answerID; //for id-tag of answer...
-
-    // ================================= { AJAX here } =================================
-
-    // URL for Wikipedia API (summary of Brazil article): https://en.wikipedia.org/api/rest_v1/page/summary/Brazil
-
-    // response.thumbnail.source yields URL for flag thumbnail (png) ...
-
-    /*
-
-
-    var nation = $(this).attr("data-name"); //change this to take from array of country names
-    var queryURL = "https://en.wikipedia.org/api/rest_v1/page/summary/" + nation;
-
-    notes from stack overflow on setting user-agent (asked for in API docs)
-    ------------------------------------------------------------------------
-    $.ajax({
-    url: "http://localhost:4000",
-    type: "POST",
-    data: {we: "2"},
-    dataType:'text',
-    headers: {"User-Agent": "user agent 1"}
-    beforeSend: function (req) {
-        req.setRequestHeader('User-Agent', 'user agent changed to 2');
-    }
-
-    // from class exercise code
-
-    // Creates AJAX call for the specific movie button being clicked
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-
-
-    });
-
-    */
-
-    let fillRandomAnswers = function() {
-
-        $("#answer-div #answers li").removeClass(".text-info");
-        $("#answer-div #answers li").removeClass(".uline");
-
-
-      /*
-        $("ol#answer-list").find("li.uline").removeClass("uline");
-
-        $("ol#answer-list").find("li.text-info").removeClass("text-info");
-        $("ol#answer-list").find("li.uline").removeClass("uline");
-        */
-
-        console.log($(this));
-        console.log($("#answer-div #answers li"));
-        gameObj.randomAnswers();
-        for (let i = 0; i < gameObj.arrAnswers.length; i++) {
-            $("li#answer-" + (i+1)).text(gameObj.arrAnswers[i]);
-        };
-    };
-
     $(document).ready(function() {
 
 // mouse hover event... adds/removes "text-info" class to make text blue text on mouse on/off
@@ -170,18 +110,20 @@
           $("#answer-div #answers ol").find("li").removeClass("uline text-info"); // change this
            $(this).addClass("uline text-info");
            answerID = $(this).attr("id");
-                console.log(answerID + "selected");
        });
 
        $("button#btn-answer").on("click", function () {
+
            console.log("clicked");
            gameObj.newNation();
            gameObj.ajaxFlagImg();
            gameObj.randomAnswers();
            gameObj.timer.start();
 
+           console.log("this answer: " + $(this).text());
+
            console.log("answer selected was: " + $("#answers ol#answer-list").find("li.text-info.uline").text());
-           $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline")
+           $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline");
           // $("#answers ol#answer-list").find("li.uline").removeClass("uline");
 
 
