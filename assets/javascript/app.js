@@ -86,6 +86,7 @@ let gameObj = {
         timesUp: function() {
 
             gameObj.timer.stop();
+            gameObj.currAnswer.length = 0; // clear current answer to eliminate false negatives
             $("button#btn-answer").text("Next Question");
             $("button#btn-answer").prop("disabled", false);
 
@@ -98,10 +99,11 @@ let gameObj = {
         if (gameObj.currAnswer === gameObj.currNation) {
             gameObj.correctAnswers++;
             $("span#correct").text(gameObj.correctAnswers);
-        } else {
+        } else if (gameObj.currAnswer.length > 0) {
             gameObj.incorrectAnswers++;
             $("span#incorrect").text(gameObj.incorrectAnswers);
         }
+
 
     },
 

@@ -129,28 +129,25 @@
 
                if (gameObj.currAnswer.length > 0) {
                    gameObj.checkAnswer();
-               };
-
-               $(this).text("Check Answer");
-               $(this).prop("disabled", true);
-
+               }
 
            } else {
                 gameObj.checkAnswer();
-
-               $(this).prop("disabled", true);
-
            }
+
+           $(this).text("Check Answer");
+           $(this).prop("disabled", true);
 
            // start new round...
 
            $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline");
 
+           gameObj.currAnswer.length = 0;
+           console.log("current answer reset to: " + gameObj.currAnswer);
            gameObj.newNation();
            gameObj.ajaxFlagImg();
            gameObj.randomAnswers();
            gameObj.chooseRandom();
-           gameObj.currAnswer.length = 0;
            gameObj.timer.reset();
            gameObj.timer.start();
 /*
