@@ -1,4 +1,6 @@
 let gameObj = {
+
+    // possible answers are taken from here, this array does not change
     arrNationsAll: ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas"
         , "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "British Virgin Islands"
         , "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Cook Islands", "Costa Rica"
@@ -15,6 +17,7 @@ let gameObj = {
         , "Turkey", "Turkmenistan", "Turks and Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "US Virgin Islands", "United States Minor Outlying Islands"
         , "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"],
 
+    // flags are taken from here, each time call is made to Wikipedia API for flag's image, country is spliced out of array
     arrNationsUnused: ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas"
         , "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "British Virgin Islands"
         , "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Cook Islands", "Costa Rica"
@@ -38,6 +41,8 @@ let gameObj = {
 
 
     //object containing timer variables/functions
+    // these were mostly taken directly from the stopwatch exercise
+
     timer: {
 
         intervalId: 0,
@@ -59,12 +64,11 @@ let gameObj = {
         }
     },
     stop: function() {
-        // DONE: Use clearInterval to stop the count here and set the clock to not be running.
         clearInterval(this.intervalId);
         this.clockRunning = false;
     },
     count: function() {
-            // decrement time by 1, "remember we cant use "this" here."
+            // "remember we cant use "this" here." (function is called by set interval, parent is window?)
             gameObj.timer.time -= 1;
 
             if (gameObj.timer.time === 0) {
@@ -118,6 +122,7 @@ let gameObj = {
      at current position/index to new array. (if element is the same subtract 1 from index & push that element).
      finally, push current answer to new array.
      */
+        this.arrAnswers.length = 0; // empty the array before filling with new answers
 
         let startPos = Math.floor(Math.random() * Math.floor(this.arrNationsAll.length / 3));
 

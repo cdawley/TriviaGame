@@ -105,8 +105,6 @@
         // 'player can choose only one answer, but choice is not final'
 
        $("#answer-div #answers li").on("click", function () {
-           console.log("first" + $(this));
-
           $("#answer-div #answers ol").find("li").removeClass("uline text-info"); // change this
            $(this).addClass("uline text-info");
            answerID = $(this).attr("id");
@@ -114,17 +112,39 @@
 
        $("button#btn-answer").on("click", function () {
 
+           // check if an answer is selected
+
+           let selectedAnswer = $("#answers ol#answer-list").find("li.text-info.uline").text();
+           if (selectedAnswer.length > 0) {
+               // answer was selected..
+               // check if it was correct
+           } else {
+               // length was 0, answer was incorrect
+           }
+
+           console.log("answer selected was: " + $("#answers ol#answer-list").find("li.text-info.uline").text());
+           $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline");
+           // $("#answers ol#answer-list").find("li.uline").removeClass("uline");
+
+
+
+                // ======= notes for future coding =======
+               // add conditional for state of button....
+               // button text: check answer / next answer if time runs out
+
+           //$(this).attr("disabled", true);
+
+           console.log("this answer: " + $(this).text());
+           // check if answer is true
+
+
+
            console.log("clicked");
            gameObj.newNation();
            gameObj.ajaxFlagImg();
            gameObj.randomAnswers();
            gameObj.timer.start();
 
-           console.log("this answer: " + $(this).text());
-
-           console.log("answer selected was: " + $("#answers ol#answer-list").find("li.text-info.uline").text());
-           $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline");
-          // $("#answers ol#answer-list").find("li.uline").removeClass("uline");
 
 
            gameObj.chooseRandom();
