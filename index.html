@@ -88,6 +88,13 @@
 
     $(document).ready(function() {
 
+        gameObj.newNation();
+        gameObj.ajaxFlagImg();
+        gameObj.randomAnswers();
+        gameObj.chooseRandom();
+        gameObj.currAnswer.length = 0;
+        gameObj.timer.start();
+
 // mouse hover event... adds/removes "text-info" class to make text blue text on mouse on/off
         $("#answer-div #answers li").hover(
             function () {
@@ -119,43 +126,38 @@
        $("button#btn-answer").on("click", function () {
 
            if ($(this).text() === "Next Question") {
-               // answer was checked when time ran out in gameObj.timer.count(), so start a new round..
 
-               gameObj.newNation();
-               gameObj.ajaxFlagImg();
-               gameObj.randomAnswers();
-               gameObj.timer.reset();
+               if (gameObj.currAnswer.length > 0) {
+                   gameObj.checkAnswer();
+               };
 
-           } else if ($(this).text() === "Check Answer") {
+               $(this).text("Check Answer");
+               $(this).prop("disabled", true);
 
-               let selectedAnswer = $("#answers ol#answer-list").find("li.text-info.uline").text();
 
-               if (selectedAnswer === gameObj.currAnswer) {
-                   // answers is correct.. so add
-                   gameObj.correctAnswers++;
-                   $("span#correct").text(gameObj.correctAnswers);
-               } else {
-                   gameObj.incorrectAnswers++;
-                   $("span#incorrect").text(gameObj.incorrectAnswers);
-               }
+           } else {
+                gameObj.checkAnswer();
 
-               // then start a new round...
-
-               gameObj.newNation();
-               gameObj.ajaxFlagImg();
-               gameObj.randomAnswers();
-               gameObj.timer.reset();
-               gameObj.currAnswer = "";
+               $(this).prop("disabled", true);
 
            }
 
+           // start new round...
+
+           $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline");
+
+           gameObj.newNation();
+           gameObj.ajaxFlagImg();
+           gameObj.randomAnswers();
+           gameObj.chooseRandom();
+           gameObj.currAnswer.length = 0;
+           gameObj.timer.reset();
+           gameObj.timer.start();
+/*
            // check if an answer is selected
 
            let selectedAnswer = $("#answers ol#answer-list").find("li.text-info.uline").text();
 
-           switch (selectedAnswer) {
-               case
-           }
            if (selectedAnswer.length > 0) {
 
                console.log("answer selected: " + selectedAnswer);
@@ -195,7 +197,7 @@
 
 
 
-           gameObj.chooseRandom();
+           gameObj.chooseRandom(); */
        });
 
     });

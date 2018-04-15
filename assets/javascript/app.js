@@ -74,27 +74,35 @@ let gameObj = {
     },
     count: function() {
             // "remember we cant use "this" here." (function is called by set interval, parent is window?)
-            gameObj.timer.time -= 1;
+
+            gameObj.timer.time--;
+            $("#time-remaining").text(gameObj.timer.time + "s");
 
             if (gameObj.timer.time === 0) {
                 gameObj.timer.timesUp();
             }
-
-            $("#time-remaining").text(gameObj.timer.time + "s");
         },
 
         timesUp: function() {
 
             gameObj.timer.stop();
-
-            if ( !$("button#btn-answer").prop("disabled") ) {
-                //an answer was selected...
-                //check answer, count/for against player
-            };
             $("button#btn-answer").text("Next Question");
-
+            $("button#btn-answer").prop("disabled", false);
 
         },
+    },
+
+    checkAnswer: function() {
+    // this is not used because checkAnswer() is called outside of this object
+
+        if (gameObj.currAnswer === gameObj.currNation) {
+            gameObj.correctAnswers++;
+            $("span#correct").text(gameObj.correctAnswers);
+        } else {
+            gameObj.incorrectAnswers++;
+            $("span#incorrect").text(gameObj.incorrectAnswers);
+        }
+
     },
 
     newNation: function () {
