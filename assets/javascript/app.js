@@ -144,7 +144,7 @@ let gameObj = {
         this.arrAnswers.length = 0; // empty the array before filling with new answers
 
         let startPos = Math.floor(Math.random() * Math.floor(this.arrNationsAll.length / 3));
-        if (startPos = 0) { startPos += 1; } // 0 will choose index 0 three times, avoid this by adding 1
+        if (startPos === 0) { startPos += 1; } // 0 will choose index 0 three times, avoid this by adding 1
 
         for (i = 1; i < 4; i++) {
 
