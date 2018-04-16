@@ -1,8 +1,8 @@
 ## Flags of the World Trivia Game
 
-This is a trivia game featuring the flags of over 200 world countries!
+This is a trivia game featuring the flags of **_over 200_ world countries!**
 
-The game uses calls to Wikipedia's REST API to present images of national flags. Possible answers, along with the correct answer, are presented to the player in each "round" of the game.
+The game uses Wikipedia's REST API to present images of national flags. Possible answers, along with the correct answer, are presented to the player in each "round" of the game.
 
 In each round, the player is given 10 seconds to answer each question. Within this 10 second time span, players can change their choice (if no choice is made during this time, nothing will be counted for/against the player.)
 
