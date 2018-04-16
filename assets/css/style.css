@@ -23,5 +23,6 @@ li {
 }
 
 div.fixed-height {
-    min-height: 40%;
+    display: inline-block;
+    min-height: 60%;
 }

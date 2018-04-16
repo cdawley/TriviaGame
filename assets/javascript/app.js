@@ -86,7 +86,6 @@ let gameObj = {
         timesUp: function() {
 
             gameObj.timer.stop();
-            gameObj.currAnswer = ""; // clear current answer to eliminate false negatives
             $("button#btn-answer").text("Next Question");
             $("button#btn-answer").prop("disabled", false);
 
@@ -145,6 +144,7 @@ let gameObj = {
         this.arrAnswers.length = 0; // empty the array before filling with new answers
 
         let startPos = Math.floor(Math.random() * Math.floor(this.arrNationsAll.length / 3));
+        if (startPos = 0) { startPos += 1; } // 0 will choose index 0 three times, avoid this by adding 1
 
         for (i = 1; i < 4; i++) {
 
