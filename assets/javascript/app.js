@@ -46,8 +46,6 @@ let gameObj = {
 
 
     //object containing timer variables/functions
-    // these were mostly taken directly from the stopwatch exercise
-
     timer: {
 
         intervalId: 0,
@@ -91,6 +89,8 @@ let gameObj = {
 
         },
     },
+
+    // functions related to the game
 
     checkAnswer: function() {
     // this is not used because checkAnswer() is called outside of this object

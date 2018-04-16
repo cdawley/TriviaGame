@@ -150,51 +150,7 @@
            gameObj.chooseRandom();
            gameObj.timer.reset();
            gameObj.timer.start();
-/*
-           // check if an answer is selected
 
-           let selectedAnswer = $("#answers ol#answer-list").find("li.text-info.uline").text();
-
-           if (selectedAnswer.length > 0) {
-
-               console.log("answer selected: " + selectedAnswer);
-               // check if it was correct
-           } else {
-               console.log("no answer selected");
-               // length was 0, answer was incorrect
-           }
-
-         //  console.log("answer selected was: " + $("#answers ol#answer-list").find("li.text-info.uline").text());
-           $("#answers ol#answer-list").find("li.text-info.uline").removeClass("text-info uline");
-           // $("#answers ol#answer-list").find("li.uline").removeClass("uline");
-
-
-
-                // ======= notes for future coding =======
-               // add conditional for state of button....
-               // button text: check answer / next answer if time runs out
-
-           //$(this).attr("disabled", true);
-
-           console.log("button text: " + $(this).text());
-           // check if answer is true
-
-
-
-           console.log("clicked");
-           gameObj.newNation();
-           gameObj.ajaxFlagImg();
-           gameObj.randomAnswers();
-           gameObj.timer.start();
-           gameObj.currAnswer = "";
-
-           // change button text to "Check Answer" and disable
-           $("button#btn-answer").text("Check Answer");
-           $("button#btn-answer").prop("disabled", true);
-
-
-
-           gameObj.chooseRandom(); */
        });
 
     });
